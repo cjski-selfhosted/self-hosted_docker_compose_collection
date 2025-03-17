@@ -2,7 +2,7 @@
 
 A collection of Docker Compose files that I use for hosting various services on my server. Simple deployment, enhanced privacy, full control over your data.
 
-This collection is designed for **home server enthusiasts, self-hosting beginners, and advanced users** looking for a quick, flexible, and efficient way to deploy their favorite services. ?
+This collection is designed for **home server enthusiasts, self-hosting beginners, and advanced users** looking for a quick, flexible, and efficient way to deploy their favorite services. 🚀
 
 ---
 
@@ -28,7 +28,7 @@ Here are some self-hosted services included in this collection, linked to their 
 * [Plex](https://github.com/linuxserver/docker-plex) - Media server for streaming movies and TV
 * [qBittorrent](https://github.com/linuxserver/docker-qbittorrent) - BitTorrent client with web UI
 
-? Discover other awesome self-hosted apps at [Awesome-Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted).
+💡 Discover other awesome self-hosted apps at [Awesome-Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted).
 
 ---
 
