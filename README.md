@@ -1,4 +1,4 @@
-# ? Self-Hosted Docker Compose Collection
+# 🐳 Self-Hosted Docker Compose Collection
 
 A collection of Docker Compose files that I use for hosting various services on my server. Simple deployment, enhanced privacy, full control over your data.
 
@@ -6,7 +6,7 @@ This collection is designed for **home server enthusiasts, self-hosting beginner
 
 ---
 
-## ? Why Use This Collection?
+## 🚀 Why Use This Collection?
 
 - **Easy Setup:** Quickly deploy services using pre-configured Docker Compose files.
 - **Self-Hosted & Private:** Keep your data under your control with local or cloud hosting.
@@ -15,7 +15,7 @@ This collection is designed for **home server enthusiasts, self-hosting beginner
 
 ---
 
-## ? List of Services
+## 📜 List of Services
 
 Here are some self-hosted services included in this collection, linked to their respective GitHub repositories:
 
@@ -32,36 +32,36 @@ Here are some self-hosted services included in this collection, linked to their 
 
 ---
 
-## ? How to Use
+## 🛠 How to Use
 
 Deploy services easily using **Docker Compose**:
 
-1?? **Clone the repository:**
+1️⃣ **Clone the repository:**
 
 ```bash
-git clone https://github.com/cjski-selfhosted/self-hosted_docker_compose_collection
+git clone git@github.com:cjski-selfhosted/self-hosted_docker_compose_collection.git
 cd self-hosted_docker_compose_collection
 ```
 
-2?? **Navigate to your desired service directory and deploy:**
+2️⃣ **Navigate to your desired service directory and deploy:**
 
 ```bash
 cd <service-name>
 docker-compose up -d
 ```
 
-3?? **Verify your service is running:**
+3️⃣ **Verify your service is running:**
 
 ```bash
 docker-compose ps
 ```
 
-? **Customization:**  
+🔧 **Customization:**  
 Each service has a `docker-compose.yml` file. Modify the configurations as needed before deployment.
 
 ---
 
-## ? Contributing
+## 🤝 Contributing
 
 Contributions are welcome!
 
@@ -71,15 +71,12 @@ Contributions are welcome!
 
 ---
 
-## ? License
+## 📄 License
 
 This collection is licensed under the **MIT License**. See [LICENSE](LICENSE) for full details.
 
 ---
 
-## ? Keywords 
+## ✨ Keywords 
 
 self-hosted, docker compose, home server, self-hosting, privacy, media server, VPN, ad-blocking, reverse proxy, automation
-
-
-
