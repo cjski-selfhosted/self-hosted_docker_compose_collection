@@ -1,0 +1,22 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: protonvpn
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports: # These are the qBittorrent ports, I like to use random ports and not the default ports 49152
+      - 49893:49893 # This is for the qBittorrent WebUI Port
+      - 6881:6881 # Listening port for TCP
+      - 6881:6881/udp # Listening port for UDP
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - OPENVPN_USER=${OPENVPN_USER} # REPLACE these with your OpenVPN credentials. Use +pmp after your username to use port forwarding
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD} # REPLACE these with your OpenVPN credentials
+      - VPN_PORT_FORWARDING=on
+      - SERVER_COUNTRIES=United Kingdom,Germany,Belgium, Netherlands # The server countries we'll use. They have to be P2P
+      - OPENVPN_EXTRA_ARGS=--tun-mtu 1390 --fragment 1390 --mssfix 1390 # Optional settings for MTU
+    volumes:
+      - ./config:/gluetun
+    restart: unless-stopped

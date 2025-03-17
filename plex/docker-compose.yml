@@ -1,0 +1,28 @@
+---
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    networks:
+      - plex_network
+      - proxy_network
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+      - VIRTUAL_HOST=plex.home # reference to NGINX proxy
+      - VIRTUAL_PORT=32400
+    volumes:
+      - /home/cjski/Docker/plex/config:/config
+      - /home/cjski/Downloads/qbittorrent/series:/tv
+      - /home/cjski/Downloads/qbittorrent/movies:/movies
+    restart: unless-stopped
+
+networks:
+  plex_network:
+    name: plex_network
+    driver: bridge
+  proxy_network:
+    external: true

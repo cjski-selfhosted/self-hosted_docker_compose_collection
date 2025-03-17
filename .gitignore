@@ -1,0 +1,10 @@
+.env
+*/.env
+*/config
+*/etc-pihole
+*/cache
+*/work
+*/appdata
+*/homarr
+
+ethereum

@@ -1,0 +1,21 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000 # to find your current ID just type "id" in the terminal
+      - PGID=1000 # to find your current group ID just type "id" in the terminal
+      - TZ=Etc/UTC
+      - WEBUI_PORT=49893 # This needs to be the exact same port we used on glueton for the WebUI
+      - TORRENTING_PORT=6881
+    volumes:
+      - ./config:/config # this will create the config folder in the same folder as yml file
+      - /home/cjski/Downloads/qbittorrent:/downloads # change the left part of : to your actual path where you want to store your downloads
+      - /home/cjski/Downloads/qbittorrent/audiobook:/downloads/audiobook
+      - /home/cjski/Downloads/qbittorrent/ebook:/downloads/ebook
+      - /home/cjski/Downloads/qbittorrent/games:/downloads/games
+      - /home/cjski/Downloads/qbittorrent/movies:/downloads/movies
+      - /home/cjski/Downloads/qbittorrent/other:/downloads/other
+      - /home/cjski/Downloads/qbittorrent/series:/downloads/series
+    network_mode: "container:protonvpn" # this needs to be the exact same name as the protonvpn container we defined
+    restart: unless-stopped

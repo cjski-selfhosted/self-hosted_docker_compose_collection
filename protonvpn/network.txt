@@ -1,0 +1,6 @@
+## create this network if you run into MTU errors
+
+sudo docker network create \
+  --driver=bridge \
+  --opt com.docker.network.driver.mtu=1390 \
+  vpn_network

@@ -1,0 +1,27 @@
+#---------------------------------------------------------------------#
+#     Homarr - A simple, yet powerful dashboard for your server.      #
+#---------------------------------------------------------------------#
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./homarr/appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=${SECRET_ENCRYPTION_KEY}
+      - VIRTUAL_HOST=dashboard.home # reference to NGINX proxy
+
+    ports:
+      - '7575:7575'
+    networks:
+      - homarr_network
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
+  homarr_network:
+    name: homarr_network
+    driver: bridge
