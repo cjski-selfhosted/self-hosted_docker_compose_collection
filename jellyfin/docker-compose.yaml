@@ -22,7 +22,6 @@ services:
     restart: 'unless-stopped'
     environment:
       - JELLYFIN_PublishedServerUrl=http://jellyfin.local
-      - VIRTUAL_HOST=jellyfin.home
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 

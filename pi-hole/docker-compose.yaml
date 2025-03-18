@@ -10,7 +10,7 @@ services:
       # Default HTTP Port
       - "8050:80/tcp"
       # Default HTTPs Port. FTL will generate a self-signed certificate
-      - "443:443/tcp"
+      #- "443:443/tcp"
       # Uncomment the below if using Pi-hole as your DHCP Server
       #- "67:67/udp"
     environment:
@@ -18,10 +18,9 @@ services:
       # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones, e.g:
       TZ: 'Europe/London'
       # Set a password to access the web interface. Not setting one will result in a random password being assigned
-      FTLCONF_webserver_api_password: 'password'
+      FTLCONF_webserver_api_password: '${WEB_UI_PASSWORD}'
       # If using Docker's default `bridge` network setting the dns listening mode should be set to 'all'
       FTLCONF_dns_listeningMode: 'all'
-      VIRTUAL_HOST: pihole.home # reference to NGINX proxy
     # Volumes store your data between container upgrades
     volumes:
       # For persisting Pi-hole's databases and common configuration file

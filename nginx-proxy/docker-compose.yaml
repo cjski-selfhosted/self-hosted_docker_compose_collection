@@ -1,3 +1,4 @@
+## This has been replaced by nginx-proxy-manager - keeping here just for reference
 services:
   nginx-proxy:
     image: nginxproxy/nginx-proxy:1.7

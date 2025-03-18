@@ -12,7 +12,6 @@ services:
       - TZ=Etc/UTC
       - VERSION=docker
       - PLEX_CLAIM= #optional
-      - VIRTUAL_HOST=plex.home # reference to NGINX proxy
       - VIRTUAL_PORT=32400
     volumes:
       - /home/cjski/Docker/plex/config:/config
