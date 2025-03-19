@@ -23,9 +23,14 @@ Here are some self-hosted services included in this collection, linked to their 
 * [Gluetun](https://github.com/qdm12/gluetun) - OpenVPN + ProtonVPN for secure networking
 * [Homarr](https://github.com/homarr-labs/homarr) - Dashboard for self-hosted applications
 * [Jellyfin](https://github.com/jellyfin/jellyfin) - Open-source media server
-* [Nginx Proxy](https://github.com/nginx-proxy/nginx-proxy) - Reverse proxy for self-hosted services
+* [Nextcloud](https://github.com/nextcloud/docker) - Access & share your files, calendars, contacts, mail & more from any device, on your terms
+* [Nginx Proxy](https://github.com/nginx-proxy/nginx-proxy) - Reverse proxy for self-hosted services (replaced by NPM)
+* [Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) - Reverse proxy for self-hosted services + WEB UI
+* [Overseerr](https://github.com/linuxserver/docker-overseerr) - Managing content requests for your media library
 * [Pi-Hole](https://github.com/pi-hole/pi-hole) - Network-wide ad blocker and tracker filter
-* [Plex](https://github.com/linuxserver/docker-plex) - Media server for streaming movies and TV
+* [Plex](https://github.com/linuxserver/docker-plex) - Media server for streaming movies and TV series
+* [Radar](https://github.com/linuxserver/docker-radarr) - See all your upcoming movies in one convenient location
+* [Sonarr](https://github.com/linuxserver/docker-sonarr) - See all your upcoming series in one convenient location
 * [qBittorrent](https://github.com/linuxserver/docker-qbittorrent) - BitTorrent client with web UI
 
 💡 Discover other awesome self-hosted apps at [Awesome-Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted).
