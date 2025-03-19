@@ -1,0 +1,25 @@
+---
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./data:/config
+      - /home/cjski/Downloads/qbittorrent:/downloads #optional
+      #- /path/to/downloadclient-downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    networks:
+      - proxy_network
+      - plex_network
+
+networks:
+  proxy_network:
+    external: true
+  plex_network:
+    external: true

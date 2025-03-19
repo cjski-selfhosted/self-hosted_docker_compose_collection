@@ -1,0 +1,26 @@
+---
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./data:/config
+      - /home/cjski/Downloads/qbittorrent/movies:/movies # optional
+      - /home/cjski/Downloads/qbittorrent/series:/series # optional
+      #- /path/to/download-client-downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks:
+      - proxy_network
+      - plex_network
+
+networks:
+  proxy_network:
+    external: true
+  plex_network:
+    external: true
