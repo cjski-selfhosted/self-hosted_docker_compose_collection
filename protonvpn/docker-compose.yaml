@@ -20,3 +20,9 @@ services:
     volumes:
       - ./config:/gluetun
     restart: unless-stopped
+    networks:
+      - vpn_network
+
+networks:
+  vpn_network:
+    external: true
