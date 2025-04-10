@@ -10,7 +10,6 @@ services:
     volumes:
       - ./data:/config
       - /home/cjski/Downloads/qbittorrent/movies:/movies # optional
-      - /home/cjski/Downloads/qbittorrent/series:/series # optional
       #- /path/to/download-client-downloads:/downloads #optional
     ports:
       - 7878:7878

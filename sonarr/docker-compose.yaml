@@ -9,7 +9,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./data:/config
-      - /home/cjski/Downloads/qbittorrent:/downloads #optional
+      - /home/cjski/Downloads/qbittorrent/series:/downloads #optional
       #- /path/to/downloadclient-downloads:/downloads #optional
     ports:
       - 8989:8989
