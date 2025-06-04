@@ -20,6 +20,7 @@ This collection is designed for **home server enthusiasts, self-hosting beginner
 Here are some self-hosted services included in this collection, linked to their respective GitHub repositories:
 
 * [AdGuard-Home](https://github.com/AdguardTeam/AdGuardHome) - Network-wide ad blocking and DNS filtering
+* [Cloudflare-DDNS](https://github.com/favonia/cloudflare-ddns) - A small, feature-rich, and robust Cloudflare DDNS updater
 * [Gluetun](https://github.com/qdm12/gluetun) - OpenVPN + ProtonVPN for secure networking
 * [Homarr](https://github.com/homarr-labs/homarr) - Dashboard for self-hosted applications
 * [Jackett](https://github.com/linuxserver/docker-jackett) - Torrent tracker management
@@ -34,6 +35,7 @@ Here are some self-hosted services included in this collection, linked to their 
 * [Radarr](https://github.com/linuxserver/docker-radarr) - See all your upcoming movies in one convenient location
 * [Sonarr](https://github.com/linuxserver/docker-sonarr) - See all your upcoming series in one convenient location
 * [Speedtest-Tracker](https://github.com/linuxserver/docker-speedtest-tracker) - Monitor your internet speed with automated tests
+* [Traefik](https://github.com/traefik/traefik) - Reverse proxy
 * [Vaultwarden](https://github.com/dani-garcia/vaultwarden) - Lightweight Bitwarden server implementation
 * [qBittorrent](https://github.com/linuxserver/docker-qbittorrent) - BitTorrent client with web UI
 
