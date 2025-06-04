@@ -1,0 +1,20 @@
+services:
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:latest
+    container_name: cloudflare_ddns_cjski_dev
+    restart: unless-stopped
+    networks:
+      - infrastructure-net
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+      - DOMAINS=*.domain.com # domain or wildcard subdomain to update
+      - IP4_PROVIDER=cloudflare.trace # Service to detect the public IPv4 address
+      - PROXY=false # Set to true to enable Cloudflare proxy (orange cloud)
+      - TTL=1 # 1 means 'automatic' TTL in Cloudflare
+      # - DETECTION_MODE=auto # Default is auto, usually fine
+      # - UPDATE_CRON=@every 5m # Default is every 5 minutes. Change if needed. Example: '@hourly', '@daily'
+      - LOG_LEVEL=INFO # Default. Other options: TRACE, DEBUG, WARNING, ERROR, FATAL
+
+networks:
+  infrastructure-net:
+    external: true
