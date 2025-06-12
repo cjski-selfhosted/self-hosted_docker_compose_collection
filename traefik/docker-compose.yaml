@@ -1,0 +1,41 @@
+name: coolify-proxy
+networks:
+  coolify:
+    external: true
+  traefik-net:
+    external: true
+services:
+  traefik:
+    container_name: coolify-proxy
+    image: "traefik:v3.1"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - coolify
+      - traefik-net
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+      - "8080:8080"
+    healthcheck:
+      test: "wget -qO- http://localhost:80/ping || exit 1"
+      interval: 4s
+      timeout: 2s
+      retries: 5
+    environment:
+      - DUCKDNS_TOKEN=${DUCKDNS_TOKEN} # Optional, for DuckDNS support
+      - CLOUDFLARE_DNS_API_TOKEN=${CLOUDFLARE_DNS_API_TOKEN} # Optional, for Cloudflare DNS support
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/opt/traefik/traefik.yml:/traefik.yml:ro"
+      - "/opt/traefik/dynamic:/dynamic:ro"
+      - "./letsencrypt:/letsencrypt"
+    command:
+      - "--configfile=/traefik.yml" # Tell Traefik to load its configuration from this file
+    labels:
+      - "traefik.enable=true" # Allow Traefik to discover itself for dashboard routing
+      # Coolify specific labels
+      - "coolify.managed=true"
+      - "coolify.proxy=true"
