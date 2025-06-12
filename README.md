@@ -31,6 +31,7 @@ Here are some self-hosted services included in this collection, linked to their 
 * [Pi-Hole](https://github.com/pi-hole/pi-hole) - Network-wide ad blocker and tracker filter
 * [Plex](https://github.com/linuxserver/docker-plex) - Media server for streaming movies and TV series
 * [Portainer](https://github.com/portainer/portainer) - Container management platform
+* [Proton Bridge](https://github.com/shenxn/protonmail-bridge-docker) - IMAP/SMTP Bridge for ProtonMail
 * [Radarr](https://github.com/linuxserver/docker-radarr) - See all your upcoming movies in one convenient location
 * [Sonarr](https://github.com/linuxserver/docker-sonarr) - See all your upcoming series in one convenient location
 * [Speedtest-Tracker](https://github.com/linuxserver/docker-speedtest-tracker) - Monitor your internet speed with automated tests
