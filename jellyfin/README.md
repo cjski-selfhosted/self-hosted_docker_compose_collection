@@ -1,6 +1,14 @@
 # Jellyfin
 
-Runs `jellyfin`. Set paths, credentials and ports in a local `.env`.
+An open-source media server for browsing and streaming your own video, music and other supported media to client devices.
+
+## Before you start
+
+Prepare media directories and separate persistent server configuration. Grant read access to media; hardware transcoding requires compatible hardware/device mappings and is not enabled by every template.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

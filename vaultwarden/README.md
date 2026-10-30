@@ -1,6 +1,14 @@
 # Vaultwarden
 
-Runs `vaultwarden`. Set paths, credentials and ports in a local `.env`.
+A lightweight server compatible with Bitwarden clients for storing and syncing a password vault.
+
+## Before you start
+
+Use HTTPS for browser/client access, prepare persistent vault storage and configure account/registration policy. Back up the vault database, attachments and key material together. Protect any enabled admin interface separately.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

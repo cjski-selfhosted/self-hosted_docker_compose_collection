@@ -25,7 +25,7 @@ def main() -> int:
         if re.search(r'\b(?:192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)\b',text):
             errors.append(f'{name}: replace private LAN addresses with parameters')
     checked = []
-    for compose in sorted(ROOT.glob('*/docker-compose.yaml')):
+    for compose in sorted([*ROOT.glob('*/docker-compose.yaml'), *ROOT.glob('examples/*/docker-compose.yaml')]):
         example = compose.parent/'.env.example'
         if not example.is_file():
             errors.append(f'{compose.parent.name}: missing .env.example');continue

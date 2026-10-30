@@ -1,6 +1,14 @@
 # Cloudflared
 
-Runs `cloudflared-admin`. Set paths, credentials and ports in a local `.env`.
+Connects local web services to Cloudflare through an outbound tunnel, so a public inbound port-forward is not required for that route.
+
+## Before you start
+
+Create a tunnel in your Cloudflare account and supply its private token. Configure an origin the tunnel can reach over a shared Docker network or an appropriate host route. Add an access policy for private tools.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

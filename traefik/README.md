@@ -1,5 +1,13 @@
 # Traefik proxy configuration
 
+Routes requests to services by hostname/path and can manage HTTPS certificates through configured ACME resolvers.
+
+## Before you start
+
+Choose the owner of ports 80/443, configure DNS/ACME credentials and prepare the mounted static/dynamic configuration and certificate directories. The declared coolify network must exist. Follow the detailed proxy notes below before running anything.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
 The running proxy uses Traefik v3.7 and is owned by Coolify. This public definition preserves its image, Docker/file-provider approach, entrypoint names and DNS-challenge resolver types while removing private domains, credentials, administrative bindings and dynamic backend routes. The exact deployed definition and private files are in the configuration snapshot.
 
 **Do not start this alongside the existing Coolify proxy.** Use it on the intended recovery/standalone host, or restore the existing platform-owned proxy through its controller.

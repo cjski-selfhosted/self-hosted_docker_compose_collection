@@ -1,6 +1,14 @@
 # Odoo
 
-Runs `odoo`, `postgresql`. Set paths, credentials and ports in a local `.env`.
+A suite of business applications such as CRM, inventory and invoicing, backed here by PostgreSQL.
+
+## Before you start
+
+Set the master/admin and database credentials, preserve the filestore and database together, and configure the public URL/email integration as needed. Available modules/features depend on the edition and installed add-ons.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

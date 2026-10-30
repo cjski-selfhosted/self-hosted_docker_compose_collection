@@ -1,6 +1,14 @@
 # N8N
 
-Runs `n8n`, `postgresql`. Set paths, credentials and ports in a local `.env`.
+Builds workflows that connect APIs, webhooks and services. This stack includes PostgreSQL for persistent workflow state.
+
+## Before you start
+
+Set database credentials and retain the n8n encryption key with backups. Public webhooks/OAuth callbacks need the correct public URL and proxy configuration. Create credentials for each integration separately.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

@@ -1,6 +1,14 @@
 # Nextcloud
 
-Runs `nextcloud`, `db`. Set paths, credentials and ports in a local `.env`.
+Provides web-based file access, syncing and sharing, with optional apps for calendars, contacts and collaboration. The stack includes MariaDB.
+
+## Before you start
+
+Set matching Nextcloud/database credentials and persistent app/database storage. Configure trusted domains and reverse-proxy settings for your URL. Decide how much storage to allocate before syncing existing files.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

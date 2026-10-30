@@ -1,6 +1,14 @@
 # Samba
 
-Runs `samba`. Set paths, credentials and ports in a local `.env`.
+Shares host directories over SMB for Windows, Linux and other compatible devices.
+
+## Before you start
+
+Use a Linux host, writable source directories and suitable local/network permissions. Prepare config.yml from the provided example, replace account passwords and align share paths with mounts. Host networking uses the host's SMB ports; check for an existing Samba server.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

@@ -1,6 +1,14 @@
 # Hermes
 
-Runs `hermes-agent`, `hermes-webui`. Set paths, credentials and ports in a local `.env`.
+Runs Hermes Agent with a browser interface for conversations, tools and configured model providers.
+
+## Before you start
+
+Configure at least one reachable model provider and private login/API credentials. Agent and WebUI must use the same HERMES_API_KEY and shared workspace/state mappings. Restore persisted code/config for an existing installation; fresh installs need upstream initialisation. A local GPU is optional when using remote providers.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

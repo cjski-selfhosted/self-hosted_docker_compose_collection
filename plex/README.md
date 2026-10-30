@@ -1,6 +1,14 @@
 # Plex
 
-Runs `plex`. Set paths, credentials and ports in a local `.env`.
+Organises a personal media library and streams it to Plex apps on supported devices.
+
+## Before you start
+
+Prepare media and persistent configuration directories, plus a Plex account/claim token when needed. Set read permissions for the library. Discovery, remote access and hardware transcoding need their own network/hardware/account setup.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

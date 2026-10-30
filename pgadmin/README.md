@@ -1,6 +1,14 @@
 # Pgadmin
 
-Runs `pgadmin`. Set paths, credentials and ports in a local `.env`.
+A browser interface for inspecting and administering PostgreSQL servers you are authorised to access. It is not the database server itself.
+
+## Before you start
+
+Set administrator email/password and persistent configuration. Register the intended PostgreSQL host and credentials after login. Join only its required database network and keep the admin interface private.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

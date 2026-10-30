@@ -1,6 +1,14 @@
 # Ntfy
 
-Runs `ntfy`. Set paths, credentials and ports in a local `.env`.
+Receives and delivers notifications through topics, HTTP requests and supported clients. Useful for scripts and service alerts.
+
+## Before you start
+
+Decide which topics are private and configure authentication/authorisation before exposing the server. Set the public base URL and persistent settings/cache as needed. A running server does not automatically subscribe your phone.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

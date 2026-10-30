@@ -1,6 +1,18 @@
 # Qbittorrent
 
-Runs `gluetun`, `qbittorrent`. Set paths, credentials and ports in a local `.env`.
+Runs qBittorrent with Gluetun so the download client shares the VPN gateway's network namespace.
+
+## Before you start
+
+You need Linux /dev/net/tun, NET_ADMIN and valid VPN-provider credentials. Configure the download paths, WebUI credentials and download-client integrations. The WebUI port is published by Gluetun, not qBittorrent. Use the combined media example for a consistent shared /data layout.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## VPN credentials and ports
+
+The public example selects `VPN_SERVICE_PROVIDER=protonvpn`; choose a supported provider and follow [Gluetun's provider setup](https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers). `OPENVPN_USER` and `OPENVPN_PASSWORD` are credentials issued by the provider, not random secrets to generate yourself. `UPDATER_PROTONVPN_*` are separate optional server-updater settings; configure them only when using that feature. Port forwarding is off in the public environment example; enabling it requires provider/plan support and matching downloader configuration. Publishing a Docker port does not request a forwarded VPN-provider port.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

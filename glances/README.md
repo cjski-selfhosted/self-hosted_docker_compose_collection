@@ -1,6 +1,14 @@
 # Glances
 
-Runs `glances`. Set paths, credentials and ports in a local `.env`.
+Shows host CPU, memory, disk, process and container resource usage through a monitoring interface.
+
+## Before you start
+
+This definition requests broad host visibility. Read its mounts, host namespaces and capabilities before deployment. Keep the monitoring interface private and mount the Docker socket read-only where supported; socket access is still sensitive.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

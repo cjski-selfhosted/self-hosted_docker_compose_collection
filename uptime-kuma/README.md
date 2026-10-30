@@ -1,6 +1,14 @@
 # Uptime Kuma
 
-Runs `uptime-kuma`. Set paths, credentials and ports in a local `.env`.
+Checks configured websites/services and presents uptime history, alerts and optional status pages.
+
+## Before you start
+
+Prepare persistent storage, create the first administrator and add monitors explicitly. The monitoring container must be able to reach each target; notification destinations also need configuration.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

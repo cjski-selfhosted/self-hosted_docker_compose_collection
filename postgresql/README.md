@@ -1,6 +1,14 @@
 # Postgresql
 
-Runs `postgresql`. Set paths, credentials and ports in a local `.env`.
+A PostgreSQL database server for application storage and SQL workloads.
+
+## Before you start
+
+Set the intended database/user/password and persistent storage. Applications connect on a private Docker network; this definition does not publish a host database port. Major-version changes need a supported upgrade/restore process.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

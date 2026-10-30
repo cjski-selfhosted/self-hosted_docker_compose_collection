@@ -1,6 +1,14 @@
 # Portainer
 
-Runs `portainer`. Set paths, credentials and ports in a local `.env`.
+A web interface for viewing containers, logs, volumes, networks and deploying/managing stacks.
+
+## Before you start
+
+Review the Docker socket mount: control of Docker grants broad control of the host. Prepare persistent Portainer storage, create an administrator and protect its management interface. Avoid having multiple tools redeploy the same stack independently.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

@@ -1,0 +1,94 @@
+# Optional example for a new project; not an export of an existing deployment.
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      VERSION: docker
+      PLEX_CLAIM: ${PLEX_CLAIM}
+    volumes:
+      - ${CONFIG_DIR}/plex:/config
+      - ${DATA_DIR}/media:/media:ro
+    ports:
+      - ${BIND_ADDRESS}:${PLEX_PORT}:32400
+    networks: [media]
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - ${CONFIG_DIR}/overseerr:/config
+    ports:
+      - ${BIND_ADDRESS}:${OVERSEERR_PORT}:5055
+    networks: [media]
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - ${CONFIG_DIR}/sonarr:/config
+      - ${DATA_DIR}:/data
+    ports:
+      - ${BIND_ADDRESS}:${SONARR_PORT}:8989
+    networks: [media]
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - ${CONFIG_DIR}/radarr:/config
+      - ${DATA_DIR}:/data
+    ports:
+      - ${BIND_ADDRESS}:${RADARR_PORT}:7878
+    networks: [media]
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    restart: unless-stopped
+    cap_add: [NET_ADMIN]
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      VPN_SERVICE_PROVIDER: ${VPN_SERVICE_PROVIDER}
+      VPN_TYPE: openvpn
+      OPENVPN_USER: ${OPENVPN_USER}
+      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
+      SERVER_COUNTRIES: ${SERVER_COUNTRIES}
+      TZ: ${TZ}
+      FIREWALL_INPUT_PORTS: '8080'
+    volumes:
+      - ${CONFIG_DIR}/gluetun:/gluetun
+    ports:
+      - ${BIND_ADDRESS}:${QBITTORRENT_PORT}:8080
+    networks: [media]
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      WEBUI_PORT: '8080'
+      TORRENTING_PORT: '6881'
+    volumes:
+      - ${CONFIG_DIR}/qbittorrent:/config
+      - ${DATA_DIR}:/data
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+networks:
+  media:
+    driver: bridge

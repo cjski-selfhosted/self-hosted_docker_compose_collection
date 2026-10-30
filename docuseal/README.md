@@ -1,6 +1,14 @@
 # Docuseal
 
-Runs `docuseal`. Set paths, credentials and ports in a local `.env`.
+Hosts forms and document-signing workflows, including preparing documents and collecting signatures in a browser.
+
+## Before you start
+
+Prepare persistent application storage and a stable external URL if other people will sign. Configure email delivery for invitations when needed. Keep document data and application keys together in your backup.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

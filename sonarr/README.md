@@ -1,6 +1,14 @@
 # Sonarr
 
-Runs `sonarr`. Set paths, credentials and ports in a local `.env`.
+Tracks TV series, searches configured indexers and coordinates episode downloads/imports with a download client.
+
+## Before you start
+
+Configure indexers, download-client credentials and a series root folder. The standalone /downloads mount must cover your intended library paths, or add a separate library mount. The combined example supplies a shared /data tree for downloads and media.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

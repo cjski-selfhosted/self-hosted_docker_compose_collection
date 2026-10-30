@@ -1,6 +1,14 @@
 # Privatebin
 
-Runs `privatebin`. Set paths, credentials and ports in a local `.env`.
+Shares text through a paste interface that encrypts/decrypts in the browser, with expiration and optional access options.
+
+## Before you start
+
+Prepare persistent paste storage if pastes must survive recreation. Use HTTPS for remote access and configure expiration/upload/traffic limits to suit your use. Review the threat model before sharing sensitive information.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

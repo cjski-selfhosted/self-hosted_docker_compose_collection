@@ -2,7 +2,7 @@
 
 I use Coolify for source builds, application deployments and some service stacks. Its proxy, database, Redis, realtime and sentinel components belong to the platform installation. They are not independent applications to recreate from copied container names.
 
-Use the [official installation and upgrade instructions](https://coolify.io/docs/get-started/installation). For recovery, keep a private copy of the platform's `.env`, installation Compose files, service Compose definitions and environment settings. Preserve the platform's own recovery material separately.
+Use the [official installation and upgrade instructions](https://coolify.io/docs/start-with-self-hosted). For recovery, keep a private copy of the platform's `.env`, installation Compose files, service Compose definitions and environment settings. Preserve the platform's own recovery material separately.
 
 The application folders in this collection contain portable service definitions. To import one into Coolify:
 

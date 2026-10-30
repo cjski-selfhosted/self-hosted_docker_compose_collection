@@ -1,6 +1,14 @@
 # Ghost
 
-Runs `mysql`, `ghost`. Set paths, credentials and ports in a local `.env`.
+A publishing application with an editor, themes, member features and newsletter tooling. This stack includes its MySQL database.
+
+## Before you start
+
+Set the public URL and matching application/database credentials. Prepare both Ghost content storage and MySQL storage. Newsletter delivery needs separate email-service configuration; starting Ghost alone does not configure bulk email.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

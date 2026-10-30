@@ -1,6 +1,14 @@
 # Maybe Finance
 
-Runs `postgres`, `maybe`. Set paths, credentials and ports in a local `.env`.
+A self-hosted finance application for tracking accounts and financial activity. This definition includes PostgreSQL.
+
+## Before you start
+
+Set matching database credentials and the application secret/encryption settings. Back up application keys with its database. External account-sync integrations require their own configuration and may have separate service requirements.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

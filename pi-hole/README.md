@@ -1,6 +1,14 @@
 # Pi Hole
 
-Runs `pihole`. Set paths, credentials and ports in a local `.env`.
+Filters DNS queries for network-wide ad/tracker blocking and provides DNS administration and query visibility.
+
+## Before you start
+
+Reserve a stable LAN address, check DNS port 53 and configure an administrator password. Change router/client DNS only after testing. DHCP is optional and needs deliberate LAN/network configuration; avoid a second conflicting DHCP server.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

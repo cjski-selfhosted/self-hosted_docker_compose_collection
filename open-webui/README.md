@@ -1,6 +1,14 @@
 # Open Webui
 
-Runs `open-webui`, `ollama-api`. Set paths, credentials and ports in a local `.env`.
+Runs a web chat interface alongside an Ollama API for locally served models and configured compatible providers.
+
+## Before you start
+
+Allocate disk and RAM for your chosen models, initialise an administrator and download/select a model after startup. The base is usable without GPU acceleration; the optional override requires compatible AMD/Vulkan devices/drivers. This does not deploy a remote llama.cpp workstation.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env

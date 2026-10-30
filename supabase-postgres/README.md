@@ -1,6 +1,14 @@
 # Supabase Postgres
 
-Runs `postgresql`. Set paths, credentials and ports in a local `.env`.
+A PostgreSQL image with Supabase-related extensions/configuration. This folder is the database component, not a complete Supabase platform.
+
+## Before you start
+
+Choose database credentials, compatible storage and the intended dependent application. Auth, REST, storage, studio and other Supabase services are not included; deploy those separately if you need the full platform.
+
+Read the [first-run guide](../GETTING_STARTED.md) for Docker installation, paths, credentials and access, and the [networking guide](../NETWORKING.md) before connecting this stack to other services. The [Compose definition](docker-compose.yaml) and [.env.example](.env.example) are the settings checklist.
+
+## Run this stack
 
 ```sh
 cp .env.example .env
