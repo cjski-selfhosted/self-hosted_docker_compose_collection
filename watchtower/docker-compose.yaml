@@ -1,8 +1,9 @@
 services:
   watchtower:
-    container_name: watchtower
     image: containrrr/watchtower
+    restart: always
+    environment:
+      WATCHTOWER_CLEANUP: ${WATCHTOWER_CLEANUP}
+      WATCHTOWER_POLL_INTERVAL: ${WATCHTOWER_POLL_INTERVAL}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /root/.docker/config.json:/config.json
-    command: --interval 43200 # update interval every 12 hours
+    - ${WATCHTOWER_BIND_1}:/var/run/docker.sock

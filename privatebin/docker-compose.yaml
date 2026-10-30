@@ -1,0 +1,18 @@
+services:
+  privatebin:
+    image: privatebin/nginx-fpm-alpine:latest
+    restart: unless-stopped
+    volumes:
+    - volume_1:/srv/data
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:8080
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - wget -qO- http://127.0.0.1:8080/
+      interval: 5000000000ns
+      timeout: 20000000000ns
+      retries: 10
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}

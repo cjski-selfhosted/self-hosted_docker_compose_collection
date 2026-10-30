@@ -1,12 +1,11 @@
 services:
   adguard-home:
-    container_name: adguard-home
     image: adguard/adguardhome
     restart: unless-stopped
     volumes:
-      - /home/cjski/Docker/adguard/work:/opt/adguardhome/work
-      - /home/cjski/Docker/adguard/config/opt/adguardhome/conf
+    - ${ADGUARD_HOME_BIND_1}:/opt/adguardhome/work
+    - ${ADGUARD_CONFIG_DIR}:/opt/adguardhome/conf
     ports:
-      - "5353:53/tcp"
-      - "5353:53/udp"
-      - "8081:80/tcp"
+    - 5353:53/tcp
+    - 5353:53/udp
+    - 8081:80/tcp

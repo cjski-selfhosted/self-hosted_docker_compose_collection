@@ -1,0 +1,58 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+api:
+  dashboard: true
+  insecure: false
+ping:
+  entryPoint: web
+log:
+  level: DEBUG
+entryPoints:
+  web:
+    address: :80
+    http:
+      encodeQuerySemicolons: true
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  websecure:
+    address: :443
+    http:
+      encodeQuerySemicolons: true
+    http3: {}
+  web-tunnel:
+    address: :8081
+    http:
+      encodeQuerySemicolons: true
+  web-tunnel-secure:
+    address: :8443
+    http:
+      encodeQuerySemicolons: true
+providers:
+  docker:
+    endpoint: unix:///var/run/docker.sock
+    exposedByDefault: false
+  file:
+    directory: /dynamic
+    watch: true
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: operator@example.com
+      storage: /letsencrypt/acme.json
+      dnsChallenge:
+        provider: duckdns
+        delayBeforeCheck: 120
+        resolvers:
+        - 1.1.1.1:53
+        - 8.8.8.8:53
+  cflare:
+    acme:
+      email: operator@example.com
+      storage: /letsencrypt/acme_cflare.json
+      dnsChallenge:
+        provider: cloudflare
+        delayBeforeCheck: 30

@@ -1,17 +1,13 @@
 services:
   jackett:
     image: lscr.io/linuxserver/jackett:latest
-    container_name: jackett
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    volumes:
-      - ./jackett/config:/config
-      - /home/cjski/Downloads/qbittorrent:/downloads  # optional but can help with searching locally
-    ports:
-      - 9117:9117
     restart: unless-stopped
-    networks:
-      - proxy_network
-      - media_network
+    environment:
+      PGID: ${PGID}
+      TZ: ${TZ}
+      PUID: ${PUID}
+    volumes:
+    - ${JACKETT_BIND_1}:/config
+    - ${JACKETT_BIND_2}:/downloads
+    ports:
+    - ${BIND_ADDRESS}:${JACKETT_PORT_9117}:9117

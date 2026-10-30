@@ -1,0 +1,15 @@
+services:
+  samba:
+    image: crazymax/samba:latest
+    restart: always
+    environment:
+      SAMBA_LOG_LEVEL: ${SAMBA_LOG_LEVEL}
+      TZ: ${TZ}
+    volumes:
+    - ${SAMBA_BIND_1}:/data
+    - ${SAMBA_BIND_2}:${SAMBA_SHARE_2_TARGET}
+    - ${SAMBA_BIND_3}:${SAMBA_SHARE_3_TARGET}
+    - ${SAMBA_BIND_4}:${SAMBA_SHARE_4_TARGET}
+    - ${SAMBA_BIND_5}:${SAMBA_SHARE_5_TARGET}
+    - ${SAMBA_BIND_6}:${SAMBA_SHARE_6_TARGET}
+    network_mode: host

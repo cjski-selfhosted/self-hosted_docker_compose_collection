@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-30",
+  "scope": "Observed image identities for current-use definitions; reference-only examples are not marked as observed. Tags remain as configured. This records identities, not image archives or successful restore tests.",
+  "stacks": {
+    "homarr": {
+      "homarr": {
+        "configured_image": "ghcr.io/homarr-labs/homarr:latest",
+        "observed_registry_digest": "ghcr.io/homarr-labs/homarr@sha256:3b7fe93f8b31b0df568b9d6e5c7223418bf009bdb03ba0c91c24cf9eac7d3581",
+        "observed_image_id": "sha256:83745a4a53d8d24e3f97f60dea9b81bcd7513be7040137c3a5d548e6caad7785"
+      }
+    },
+    "jackett": {
+      "jackett": {
+        "configured_image": "lscr.io/linuxserver/jackett:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/jackett@sha256:e1f13dadf9b856d81eef84deeaa16c17c1e1280b3ab8944c68062be59df47d44",
+        "observed_image_id": "sha256:edbe4ae097608cc5d90bf5f9c055f38029d62e841716e5ae06152fe773361f92"
+      }
+    },
+    "jellyfin": {
+      "jellyfin": {
+        "configured_image": "jellyfin/jellyfin:latest",
+        "observed_registry_digest": "jellyfin/jellyfin@sha256:fea863d0cd9ec445985d9c75fc6ed64e38a1d2766cf0c250a33d553f4fc1b771",
+        "observed_image_id": "sha256:995797bf87597b4247190e0034827f7887b34e75a4f603374591eab4f44172cb"
+      }
+    },
+    "overseerr": {
+      "overseerr": {
+        "configured_image": "lscr.io/linuxserver/overseerr:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/overseerr@sha256:53a1b839ffa81f139e1552840772bff8a5d13f5c78a69cce22458b9a6cd0844d",
+        "observed_image_id": "sha256:3b6ccb144973dffdaf105bcd3e4eb2b4b13f359dc6bd5273ebc0e4e9507a4a4e"
+      }
+    },
+    "pi-hole": {
+      "pihole": {
+        "configured_image": "pihole/pihole:latest",
+        "observed_registry_digest": "pihole/pihole@sha256:d34134716fc32038b052a8674c7c6879e0ff21f0e6d8af345166fffa2c27c113",
+        "observed_image_id": "sha256:2fd502ece0182fcd9fd71f51ae686a0d191ba7dc368f961f98c83aac39b25704"
+      }
+    },
+    "plex": {
+      "plex": {
+        "configured_image": "lscr.io/linuxserver/plex:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/plex@sha256:01a53d9c7adcbb3701fbb0a4230c0a37c85453759b6b05a67356c3c7a09de08d",
+        "observed_image_id": "sha256:71b649b916812cb59134146bb211dc02bf0a45d2fd7ee1847e670f4e6aeb8461"
+      }
+    },
+    "portainer": {
+      "portainer": {
+        "configured_image": "portainer/portainer-ce:latest",
+        "observed_registry_digest": "portainer/portainer-ce@sha256:3609c307943bca8e5c492f69ddd6965df177208b50678a4cff28391c8dd4e96e",
+        "observed_image_id": "sha256:8bfae45f9e7b3359ec4046e6f36cf148c067958a049e6fbbdb77f92d015faa33"
+      }
+    },
+    "proton-bridge": {
+      "protonmail-bridge": {
+        "configured_image": "shenxn/protonmail-bridge:latest",
+        "observed_registry_digest": "shenxn/protonmail-bridge@sha256:3717b4441130675dc9131196de9f9c5287d2ea21b138d83b0486429e1737638a",
+        "observed_image_id": "sha256:aacf2de9029dab11ca7ebfea4614c37b9cd58323c47c4773bd3f15d13ce62868"
+      }
+    },
+    "radarr": {
+      "radarr": {
+        "configured_image": "lscr.io/linuxserver/radarr:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/radarr@sha256:084b3b2ab1d0ef930660727259546a241f2bdf67c9ed085d54bf1486a6887c9b",
+        "observed_image_id": "sha256:a9b08c177649ae4e2c03f4ab375140ac8e633f87a781eeaa7a0e7f1e85b112a8"
+      }
+    },
+    "sonarr": {
+      "sonarr": {
+        "configured_image": "lscr.io/linuxserver/sonarr:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/sonarr@sha256:48e36b608b461273b9dae857725cd0561a127f2c694b687318f6d0c5ce63e5c9",
+        "observed_image_id": "sha256:076be80fcab2bd0acdea4c8c5f604318f2feb61aeeaacd71cfcb1983a8fb50bf"
+      }
+    },
+    "speedtest-tracker": {
+      "speedtest-tracker": {
+        "configured_image": "lscr.io/linuxserver/speedtest-tracker:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/speedtest-tracker@sha256:8d3c2826b708c18be7fb46c1afebc6bb3b1ab7c519473df1be89f5ecaa8bb31f",
+        "observed_image_id": "sha256:bb413b06c5730c3e8e3ddde9e4bc975620861682eb510290f9d4743cbfb7d475"
+      }
+    },
+    "vaultwarden": {
+      "vaultwarden": {
+        "configured_image": "vaultwarden/server:latest",
+        "observed_registry_digest": "vaultwarden/server@sha256:efb3cde962015fcc036b2ea625242248611943b27212ebf4392841fb30fad055",
+        "observed_image_id": "sha256:b4312ccf9634e3b5e7044a90ca13169c78b2627c648b81092f0523a5d07fd7f6"
+      }
+    },
+    "watchtower": {
+      "watchtower": {
+        "configured_image": "containrrr/watchtower",
+        "observed_registry_digest": "containrrr/watchtower@sha256:6dd50763bbd632a83cb154d5451700530d1e44200b268a4e9488fefdfcf2b038",
+        "observed_image_id": "sha256:e7dd50d07b86c380dd53caeb7778da052d1a8fc2c606644a419afa35e9f5691e"
+      }
+    },
+    "samba": {
+      "samba": {
+        "configured_image": "crazymax/samba:latest",
+        "observed_registry_digest": "crazymax/samba@sha256:b37f7af97c773eddb593537f64da6389e5ee6695bcecf44f3ba1a8a6bcf34125",
+        "observed_image_id": "sha256:4b3bd128bcc64da2d76854433399eb4e11eb21d9aa03a7ae1d6bb2e51fcebc33"
+      }
+    },
+    "selenium": {
+      "selenium": {
+        "configured_image": "selenium/standalone-chrome:latest",
+        "observed_registry_digest": "selenium/standalone-chrome@sha256:d6843a37cd2852fac7f33099709a203769f864dcf260e740a34e9605055c1dd5",
+        "observed_image_id": "sha256:41832151867b107c273615d6fec64256e7591ca8825bb997a95d91e3a5ba7b15"
+      }
+    },
+    "nextcloud": {
+      "nextcloud": {
+        "configured_image": "nextcloud:latest",
+        "observed_registry_digest": "nextcloud@sha256:6f514aae04ad16917124064f7df851720c82b5ccb180b56cb787bed2ed8a7246",
+        "observed_image_id": "sha256:c96e92b460b0bbc7ac1c023539cc27a62dc798ba0cc8a09790caf7d790faf3b1"
+      },
+      "db": {
+        "configured_image": "mariadb:10.6",
+        "observed_registry_digest": "mariadb@sha256:aa188ef940b4e660483f2a128825baaa627b00f86a572606e1a9d294880ebbe9",
+        "observed_image_id": "sha256:d29a34d05b1de1afa84c88bdad35cbba6dc1d1135ad2a95a8ceb56a710819e82"
+      }
+    },
+    "qbittorrent": {
+      "gluetun": {
+        "configured_image": "qmcgaw/gluetun:latest",
+        "observed_registry_digest": "qmcgaw/gluetun@sha256:4af0c804003481e100180e1f8d4d5e9c48163fedc0f88d061881b615aef9d183",
+        "observed_image_id": "sha256:f7a9e30e6662784521dd724d4dfe3c2e8fb1adff763d781da4bcb0a674dc33a2"
+      },
+      "qbittorrent": {
+        "configured_image": "lscr.io/linuxserver/qbittorrent:latest",
+        "observed_registry_digest": "lscr.io/linuxserver/qbittorrent@sha256:75ecbb1c89ab7b0a21c4bde40b4820e4f1649d2d56d83b91913422155e8d2a5f",
+        "observed_image_id": "sha256:d4f0b8622da58717c2baa61cc05e3d597b72032121a2cba9af29f0e334461346"
+      }
+    },
+    "protonvpn": {
+      "gluetun": {
+        "configured_image": "qmcgaw/gluetun:latest",
+        "observed_registry_digest": "qmcgaw/gluetun@sha256:4af0c804003481e100180e1f8d4d5e9c48163fedc0f88d061881b615aef9d183",
+        "observed_image_id": "sha256:f7a9e30e6662784521dd724d4dfe3c2e8fb1adff763d781da4bcb0a674dc33a2"
+      }
+    },
+    "cloudflared": {
+      "cloudflared-admin": {
+        "configured_image": "cloudflare/cloudflared:latest",
+        "observed_registry_digest": "cloudflare/cloudflared@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+        "observed_image_id": "sha256:5436e6763af2b3fb02aad5f5caebf4291e2bded1ea89b8cae774a06f55f91110"
+      }
+    },
+    "ntfy": {
+      "ntfy": {
+        "configured_image": "binwiederhier/ntfy:latest",
+        "observed_registry_digest": "binwiederhier/ntfy@sha256:6f0c9abab7b99a978d816611cc90dabb4849b81f60c53114e91cd07931085dc0",
+        "observed_image_id": "sha256:a080fe345c08dd54faeb5a8121c035e74a823f111cf9209bd228b886474e15b7"
+      }
+    },
+    "n8n": {
+      "n8n": {
+        "configured_image": "docker.n8n.io/n8nio/n8n:latest",
+        "observed_registry_digest": "docker.n8n.io/n8nio/n8n@sha256:9a8d8dcea75667496695d7810d7e1fe018a65efb36cc499d347f3931b3957b5d",
+        "observed_image_id": "sha256:302b599cb074bb097e04277f09d2bd81631cb9dbfba3f5ad2180dbcafd8be152"
+      },
+      "postgresql": {
+        "configured_image": "postgres:16-alpine",
+        "observed_registry_digest": "postgres@sha256:0cefaabd882e42bcb2a2f3dc56d3ce4770560ba62fd7f197f1a2e008fd5731ab",
+        "observed_image_id": "sha256:6a2e324ebe59af6031c4c1cd96c1d5072c2ebc36563d2196365e43b8297c062d"
+      }
+    },
+    "privatebin": {
+      "privatebin": {
+        "configured_image": "privatebin/nginx-fpm-alpine:latest",
+        "observed_registry_digest": "privatebin/nginx-fpm-alpine@sha256:f00194ae0d8764f16e7aefba3fbb0d3bb9c66fb5cac39e1fe015181d289714ad",
+        "observed_image_id": "sha256:4f93e3ae1d7fe5e95714c1af31ccb8cb4349cf2db605749916ead8b03bf6b595"
+      }
+    },
+    "pgadmin": {
+      "pgadmin": {
+        "configured_image": "dpage/pgadmin4:latest",
+        "observed_registry_digest": "dpage/pgadmin4@sha256:3591b3d02910dcd817dec6fcaa681c278ba6966945283dd0ea0042731c330c83",
+        "observed_image_id": "sha256:8f8a3ca44e030af956ea82c2690319f3010ff2b37ddb1405525de15cd154b5e6"
+      }
+    },
+    "open-webui": {
+      "open-webui": {
+        "configured_image": "ghcr.io/open-webui/open-webui:latest",
+        "observed_registry_digest": "ghcr.io/open-webui/open-webui@sha256:0b399a8ba34558e181d316750455f2a95376a38cd60a61b9c942e138898944bd",
+        "observed_image_id": "sha256:0da2960b46db0a884f1f7146d8d30f637e92fdaf3372e9e257d7243a201a6bf7"
+      },
+      "ollama-api": {
+        "configured_image": "ollama/ollama:latest",
+        "observed_registry_digest": "ollama/ollama@sha256:b2f0122c476bc9fe7ce679d8bb4bd555351e25e2554eefb156f61cb0a89cf429",
+        "observed_image_id": "sha256:46d2fa8707cc254faa5ccdb16ac2b4e6d5cb38cd079035a24174a5141f087297"
+      }
+    },
+    "maybe-finance": {
+      "postgres": {
+        "configured_image": "postgres:16",
+        "observed_registry_digest": "postgres@sha256:1beaa3084eee2676f20a9cd9928f0bf2c5bf674f8e49f81017912183d377c61c",
+        "observed_image_id": "sha256:74d436cb49d3398cf7b5d7b33635d43623d9e4da4b93c22db453f7d5d81181b1"
+      },
+      "maybe": {
+        "configured_image": "ghcr.io/maybe-finance/maybe:latest",
+        "observed_registry_digest": "ghcr.io/maybe-finance/maybe@sha256:c2d398bfc334db4d9862f268401dbb46f97848eaaaad8295d1221f2d99d631cc",
+        "observed_image_id": "sha256:a545eccb5c3c8b9e9724ed73215d202a9ddbd1b2952d9c5b89a41fd30d2390ab"
+      }
+    },
+    "odoo": {
+      "odoo": {
+        "configured_image": "odoo:18",
+        "observed_registry_digest": "odoo@sha256:3bda1d58aaff2c3ab7b9a2c1743689bfd75a0121f672d5ffa51d21fe34057ef6",
+        "observed_image_id": "sha256:7d23249b8dc43d67eee7ffe710dd50a2dd8e41b2c9935bfceea85dab10b396d3"
+      },
+      "postgresql": {
+        "configured_image": "postgres:16-alpine",
+        "observed_registry_digest": "postgres@sha256:0cefaabd882e42bcb2a2f3dc56d3ce4770560ba62fd7f197f1a2e008fd5731ab",
+        "observed_image_id": "sha256:6a2e324ebe59af6031c4c1cd96c1d5072c2ebc36563d2196365e43b8297c062d"
+      }
+    },
+    "docuseal": {
+      "docuseal": {
+        "configured_image": "docuseal/docuseal:latest",
+        "observed_registry_digest": "docuseal/docuseal@sha256:2786607f1f6eb54f982a926bd78c81ee23b6545e59d1ff548bd672094760621c",
+        "observed_image_id": "sha256:f1283002a3ca75e41019aeba90178ac346e71e25eed85cbb4dba430cdc9b6ecc"
+      }
+    },
+    "glances": {
+      "glances": {
+        "configured_image": "nicolargo/glances:latest",
+        "observed_registry_digest": "nicolargo/glances@sha256:413ddc0b03422ab0bcbf30f53faf63c3ee91b354bf544cd01aa60afa73a4cda2",
+        "observed_image_id": "sha256:0bf17846df6f0f98e64611cd432bdfe44e9223f0b5de4aed61c6e4668f7bd359"
+      }
+    },
+    "uptime-kuma": {
+      "uptime-kuma": {
+        "configured_image": "louislam/uptime-kuma:1",
+        "observed_registry_digest": "louislam/uptime-kuma@sha256:70233f4acb5163fd2a59a49909cf01e44415cecff13dba69e3a86647a2919f83",
+        "observed_image_id": "sha256:ded82109b2b8c18d50c94642d27be734565beab7a954709450420131e54e1241"
+      }
+    },
+    "ghost": {
+      "mysql": {
+        "configured_image": "mysql:8.0",
+        "observed_registry_digest": "mysql@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b",
+        "observed_image_id": "sha256:6cd09145362dfe6831b14545de3d5fd6cc75c37cfd6ef8561429c1fc73518b39"
+      },
+      "ghost": {
+        "configured_image": "ghost:5",
+        "observed_registry_digest": "ghost@sha256:3ffcb8f2f1f808806e7a0f694a2b130cd78652a26b4337b33fe7e249ce58665a",
+        "observed_image_id": "sha256:be71366308fc2caced336681cfa4957cee899317205f37f9c325c0e8dbda1204"
+      }
+    },
+    "it-tools": {
+      "it-tools": {
+        "configured_image": "corentinth/it-tools:latest",
+        "observed_registry_digest": "corentinth/it-tools@sha256:8b8128748339583ca951af03dfe02a9a4d7363f61a216226fc28030731a5a61f",
+        "observed_image_id": "sha256:bb7ba9626731f5919cea26f919bbc204fb031533cdf8742cde45d08e16ce2e0f"
+      }
+    },
+    "hermes": {
+      "hermes-agent": {
+        "configured_image": "nousresearch/hermes-agent@sha256:9c5561579f3ffdf333401797094ac3a743738d6c25d40f4331c7bf77b694238d",
+        "observed_registry_digest": "nousresearch/hermes-agent@sha256:9c5561579f3ffdf333401797094ac3a743738d6c25d40f4331c7bf77b694238d",
+        "observed_image_id": "sha256:49b70739d2e8b4206fabf8b089f88337db73f8edaccb93e64b0836694ef10a03"
+      },
+      "hermes-webui": {
+        "configured_image": "ghcr.io/nesquena/hermes-webui@sha256:d0bbb1c5371b1f4b0a28e4cffa5f403780eb81601b66a6d6843f6fc338f08523",
+        "observed_registry_digest": "ghcr.io/nesquena/hermes-webui@sha256:d0bbb1c5371b1f4b0a28e4cffa5f403780eb81601b66a6d6843f6fc338f08523",
+        "observed_image_id": "sha256:68de0f4e8f5c70ea061e8b86a35e59d30e5b3cc887a2b8652c3ff67ea2b6720a"
+      }
+    },
+    "postgresql": {
+      "postgresql": {
+        "configured_image": "postgres:18-alpine",
+        "observed_registry_digest": "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+        "observed_image_id": "sha256:57b23a0326ee442e83b3d3fa027c5a148be0a392d7c91d1ca4e1e70131ee859a"
+      }
+    },
+    "mysql": {
+      "mysql": {
+        "configured_image": "mysql:8",
+        "observed_registry_digest": "mysql@sha256:a0225d1ea6631c8bc2385dc4c2faba17bbf1834ecf369e1659a9a382bd8d5dd7",
+        "observed_image_id": "sha256:d2a0d367629f5b5dcd6cdabc53fe9183a0a3c313f9bd354e368290ba6fbf6d3f"
+      }
+    },
+    "supabase-postgres": {
+      "postgresql": {
+        "configured_image": "supabase/postgres:17.4.1.032",
+        "observed_registry_digest": "supabase/postgres@sha256:dc4f75a81ca7bc27af5063ec9ef89000402983bff15dfcefb4a6a9151b239bb7",
+        "observed_image_id": "sha256:89ffe5aeaeb6d37708341f7a39f7132e602e8714f3734508fc4229738eeebd71"
+      }
+    },
+    "traefik": {
+      "traefik": {
+        "configured_image": "traefik:v3.7",
+        "observed_registry_digest": "traefik@sha256:1336e85aaed293bd63d005086e0dd013b04078b26aaeb1c18b26a2f928af7e65",
+        "observed_image_id": "sha256:3733df53e74cd0df7d1b839168e30d2bd7f5e77dd6214ef3d8056ee1f21392b7"
+      }
+    }
+  }
+}

@@ -1,26 +1,13 @@
-#---------------------------------------------------------------------#
-#     Homarr - A simple, yet powerful dashboard for your server.      #
-#---------------------------------------------------------------------#
 services:
   homarr:
-    container_name: homarr
     image: ghcr.io/homarr-labs/homarr:latest
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
     restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./homarr/appdata:/appdata
     environment:
-      - SECRET_ENCRYPTION_KEY=${SECRET_ENCRYPTION_KEY}
-
+      SECRET_ENCRYPTION_KEY: ${SECRET_ENCRYPTION_KEY}
+    volumes:
+    - ${HOMARR_BIND_1}:/appdata
+    - ${HOMARR_BIND_2}:/var/run/docker.sock
     ports:
-      - '7575:7575'
-    networks:
-      - homarr_network
-      - proxy_network
-
-networks:
-  proxy_network:
-    external: true
-  homarr_network:
-    name: homarr_network
-    driver: bridge
+    - ${BIND_ADDRESS}:${HOMARR_PORT_7575}:7575

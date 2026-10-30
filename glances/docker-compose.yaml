@@ -1,0 +1,22 @@
+services:
+  glances:
+    image: nicolargo/glances:latest
+    restart: unless-stopped
+    environment:
+      GLANCES_OPT: ${GLANCES_OPT}
+    volumes:
+    - ${GLANCES_BIND_1}:/var/run/docker.sock:ro
+    - ${GLANCES_BIND_2}:/run/user/1000/podman/podman.sock:ro
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:61208
+    privileged: true
+    pid: host
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://localhost:61208
+      interval: 2000000000ns
+      timeout: 10000000000ns
+      retries: 30

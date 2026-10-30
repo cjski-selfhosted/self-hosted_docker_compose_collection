@@ -1,22 +1,12 @@
 services:
   portainer:
     image: portainer/portainer-ce:latest
-    container_name: portainer
-    ports:
-      - 9000:9000
-    volumes:
-      - portainer_data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
-    networks:
-      - portainer_network
-      - proxy_network
+    volumes:
+    - volume_1:/data
+    - ${PORTAINER_BIND_2}:/var/run/docker.sock
+    ports:
+    - ${BIND_ADDRESS}:${PORTAINER_PORT_9000}:9000
 volumes:
-  portainer_data:
-
-networks:
-  proxy_network:
-    external: true
-  portainer_network:
-    name: portainer_network
-    driver: bridge
+  volume_1:
+    name: ${VOLUME_1_NAME}

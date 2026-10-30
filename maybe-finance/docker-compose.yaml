@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+    volumes:
+    - volume_1:/var/lib/postgresql/data
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5000000000ns
+      timeout: 20000000000ns
+      retries: 10
+  maybe:
+    image: ghcr.io/maybe-finance/maybe:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      DB_HOST: ${DB_HOST}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      POSTGRES_USER: ${POSTGRES_USER}
+      RAILS_ASSUME_SSL: ${RAILS_ASSUME_SSL}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      RAILS_FORCE_SSL: ${RAILS_FORCE_SSL}
+      SELF_HOSTED: ${SELF_HOSTED}
+      GOOD_JOB_EXECUTION_MODE: ${GOOD_JOB_EXECUTION_MODE}
+    volumes:
+    - volume_2:/rails/storage
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:3000
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}
+  volume_2:
+    name: ${VOLUME_2_NAME}

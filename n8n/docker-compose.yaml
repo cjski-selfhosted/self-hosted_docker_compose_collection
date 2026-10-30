@@ -1,0 +1,57 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    restart: unless-stopped
+    environment:
+      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_POSTGRESDB_HOST: ${DB_POSTGRESDB_HOST}
+      N8N_EDITOR_BASE_URL: ${N8N_EDITOR_BASE_URL}
+      DB_POSTGRESDB_SCHEMA: ${DB_POSTGRESDB_SCHEMA}
+      DB_POSTGRESDB_DATABASE: ${DB_POSTGRESDB_DATABASE}
+      N8N_RUNNERS_ENABLED: ${N8N_RUNNERS_ENABLED}
+      DB_POSTGRESDB_USER: ${DB_POSTGRESDB_USER}
+      DB_TYPE: ${DB_TYPE}
+      N8N_HOST: ${N8N_HOST}
+      TZ: ${TZ}
+      DB_POSTGRESDB_PORT: ${DB_POSTGRESDB_PORT}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE}
+      WEBHOOK_URL: ${WEBHOOK_URL}
+    volumes:
+    - volume_1:/home/node/.n8n
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:5678
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - wget -qO- http://127.0.0.1:5678/
+      interval: 5000000000ns
+      timeout: 20000000000ns
+      retries: 10
+    depends_on:
+      postgresql:
+        condition: service_healthy
+  postgresql:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: ${TZ}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+    volumes:
+    - volume_2:/var/lib/postgresql/data
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5000000000ns
+      timeout: 20000000000ns
+      retries: 10
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}
+  volume_2:
+    name: ${VOLUME_2_NAME}

@@ -1,21 +1,12 @@
 services:
   vaultwarden:
     image: vaultwarden/server:latest
-    container_name: vaultwarden
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
     restart: unless-stopped
     environment:
-      DOMAIN: "https://vw.domain.tld"
+      DOMAIN: ${DOMAIN}
     volumes:
-      - ./data/:/data/
+    - ${VAULTWARDEN_BIND_1}:/data
     ports:
-      - 8070:80
-    networks:
-      - vaultwarden_network
-      - proxy_network
-
-networks:
-  proxy_network:
-    external: true
-  vaultwarden_network:
-    name: vaultwarden_network
-    driver: bridge
+    - ${BIND_ADDRESS}:${VAULTWARDEN_PORT_80}:80

@@ -1,0 +1,45 @@
+services:
+  odoo:
+    image: odoo:18
+    restart: unless-stopped
+    environment:
+      HOST: ${HOST}
+      USER: ${USER}
+      PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+    - volume_1:/mnt/extra-addons
+    - volume_2:/var/lib/odoo
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:8069
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://127.0.0.1:8069
+      interval: 2000000000ns
+      timeout: 10000000000ns
+      retries: 30
+  postgresql:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+    volumes:
+    - volume_3:/var/lib/postgresql/data
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5000000000ns
+      timeout: 20000000000ns
+      retries: 10
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}
+  volume_2:
+    name: ${VOLUME_2_NAME}
+  volume_3:
+    name: ${VOLUME_3_NAME}

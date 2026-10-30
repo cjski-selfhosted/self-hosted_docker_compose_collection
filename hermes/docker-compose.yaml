@@ -1,0 +1,101 @@
+services:
+  hermes-agent:
+    image: nousresearch/hermes-agent@sha256:9c5561579f3ffdf333401797094ac3a743738d6c25d40f4331c7bf77b694238d
+    restart: unless-stopped
+    environment:
+      HERMES_WEBUI_PASSWORD: ${HERMES_WEBUI_PASSWORD}
+      AGENT_BROWSER_EXECUTABLE_PATH: ${AGENT_BROWSER_EXECUTABLE_PATH}
+      HERMES_REDACT_SECRETS: ${HERMES_REDACT_SECRETS}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      HERMES_WEBUI_USERNAME: ${HERMES_WEBUI_USERNAME}
+      FIRECRAWL_API_URL: ${FIRECRAWL_API_URL}
+      HERMES_HOME: ${HERMES_HOME}
+      HERMES_GID: ${HERMES_GID}
+      HERMES_WEBUI_GATEWAY_API_KEY: ${HERMES_API_KEY}
+      HERMES_LOGIN_PASSWORD: ${HERMES_LOGIN_PASSWORD}
+      API_SERVER_HOST: ${API_SERVER_HOST}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      API_SERVER_KEY: ${HERMES_API_KEY}
+      HERMES_UID: ${HERMES_UID}
+      HERMES_WRITE_SAFE_ROOT: ${HERMES_WRITE_SAFE_ROOT}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      FIRECRAWL_API_KEY: ${FIRECRAWL_API_KEY}
+      HERMES_LOGIN_USER: ${HERMES_LOGIN_USER}
+      GATEWAY_ALLOW_ALL_USERS: ${GATEWAY_ALLOW_ALL_USERS}
+      HERMES_ALLOW_PRIVATE_URLS: ${HERMES_ALLOW_PRIVATE_URLS}
+      API_SERVER_ENABLED: ${API_SERVER_ENABLED}
+    command:
+    - gateway
+    - run
+    volumes:
+    - volume_1:/workspace
+    - volume_2:/opt/hermes
+    - volume_3:/workspaces/cold-boot
+    - volume_4:/home/hermes/.hermes
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8642/health',
+        timeout=5)
+      interval: 30000000000ns
+      timeout: 10000000000ns
+      start_period: 180000000000ns
+      retries: 3
+  hermes-webui:
+    image: ghcr.io/nesquena/hermes-webui@sha256:d0bbb1c5371b1f4b0a28e4cffa5f403780eb81601b66a6d6843f6fc338f08523
+    restart: unless-stopped
+    environment:
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      HERMES_WEBUI_GATEWAY_BASE_URL: ${HERMES_WEBUI_GATEWAY_BASE_URL}
+      HERMES_WEBUI_PASSWORD: ${HERMES_WEBUI_HERMES_WEBUI_PASSWORD}
+      HERMES_LOGIN_PASSWORD: ${HERMES_LOGIN_PASSWORD}
+      HERMES_WEBUI_GATEWAY_USE_RUNS_API: ${HERMES_WEBUI_GATEWAY_USE_RUNS_API}
+      HERMES_WEBUI_STATE_DIR: ${HERMES_WEBUI_STATE_DIR}
+      HERMES_API_URL: ${HERMES_API_URL}
+      FIRECRAWL_API_KEY: ${FIRECRAWL_API_KEY}
+      HERMES_WEBUI_DEFAULT_WORKSPACE: ${HERMES_WEBUI_DEFAULT_WORKSPACE}
+      HERMES_ALLOW_PRIVATE_URLS: ${HERMES_ALLOW_PRIVATE_URLS}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      HERMES_WEBUI_GATEWAY_API_KEY: ${HERMES_API_KEY}
+      API_SERVER_KEY: ${HERMES_API_KEY}
+      WANTED_UID: ${WANTED_UID}
+      HERMES_LOGIN_USER: ${HERMES_LOGIN_USER}
+      WANTED_GID: ${WANTED_GID}
+      FIRECRAWL_API_URL: ${FIRECRAWL_API_URL}
+      HERMES_WEBUI_CHAT_BACKEND: ${HERMES_WEBUI_CHAT_BACKEND}
+      HERMES_WEBUI_USERNAME: ${HERMES_WEBUI_USERNAME}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+    volumes:
+    - volume_1:/workspace
+    - volume_3:/workspaces/cold-boot
+    - volume_4:/home/hermes/.hermes
+    - volume_4:/home/hermeswebui/.hermes
+    - volume_2:/home/hermeswebui/.hermes/hermes-agent:ro
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:8787
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://127.0.0.1:8787/health
+      interval: 30000000000ns
+      timeout: 5000000000ns
+      start_period: 60000000000ns
+      retries: 3
+    depends_on:
+      hermes-agent:
+        condition: service_healthy
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}
+  volume_2:
+    name: ${VOLUME_2_NAME}
+  volume_3:
+    name: ${VOLUME_3_NAME}
+  volume_4:
+    name: ${VOLUME_4_NAME}

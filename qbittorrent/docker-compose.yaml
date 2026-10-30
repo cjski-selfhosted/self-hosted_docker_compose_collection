@@ -1,21 +1,46 @@
 services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    restart: unless-stopped
+    environment:
+      OPENVPN_USER: ${OPENVPN_USER}
+      OPENVPN_EXTRA_ARGS: ${OPENVPN_EXTRA_ARGS}
+      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD}
+      UPDATER_PROTONVPN_PASSWORD: ${UPDATER_PROTONVPN_PASSWORD}
+      VPN_PORT_FORWARDING: ${VPN_PORT_FORWARDING}
+      UPDATER_PROTONVPN_USERNAME: ${UPDATER_PROTONVPN_USERNAME}
+      SERVER_COUNTRIES: ${SERVER_COUNTRIES}
+      VPN_SERVICE_PROVIDER: ${VPN_SERVICE_PROVIDER}
+    volumes:
+    - ${GLUETUN_BIND_1}:/gluetun
+    ports:
+    - ${BIND_ADDRESS}:${GLUETUN_PORT_49893}:49893
+    - ${BIND_ADDRESS}:${GLUETUN_PORT_6881}:6881
+    - ${BIND_ADDRESS}:${GLUETUN_PORT_6881_UDP}:6881/udp
+    cap_add:
+    - CAP_NET_ADMIN
+    devices:
+    - /dev/net/tun:/dev/net/tun:rwm
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    environment:
-      - PUID=1000 # to find your current ID just type "id" in the terminal
-      - PGID=1000 # to find your current group ID just type "id" in the terminal
-      - TZ=Etc/UTC
-      - WEBUI_PORT=49893 # This needs to be the exact same port we used on glueton for the WebUI
-      - TORRENTING_PORT=6881
-    volumes:
-      - ./config:/config # this will create the config folder in the same folder as yml file
-      - /home/cjski/Downloads/qbittorrent:/downloads # change the left part of : to your actual path where you want to store your downloads
-      - /home/cjski/Downloads/qbittorrent/audiobook:/downloads/audiobook
-      - /home/cjski/Downloads/qbittorrent/ebook:/downloads/ebook
-      - /home/cjski/Downloads/qbittorrent/games:/downloads/games
-      - /home/cjski/Downloads/qbittorrent/movies:/downloads/movies
-      - /home/cjski/Downloads/qbittorrent/other:/downloads/other
-      - /home/cjski/Downloads/qbittorrent/series:/downloads/series
-    network_mode: "container:protonvpn" # this needs to be the exact same name as the protonvpn container we defined
     restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      WEBUI_PORT: ${WEBUI_PORT}
+      TORRENTING_PORT: ${TORRENTING_PORT}
+    volumes:
+    - ${QBITTORRENT_BIND_1}:/config
+    - ${QBITTORRENT_BIND_2}:/downloads
+    - ${QBITTORRENT_BIND_3}:/downloads/audiobook
+    - ${QBITTORRENT_BIND_4}:/downloads/ebook
+    - ${QBITTORRENT_BIND_5}:/downloads/games
+    - ${QBITTORRENT_BIND_6}:/downloads/movies
+    - ${QBITTORRENT_BIND_7}:/downloads/other
+    - ${QBITTORRENT_BIND_8}:/downloads/series
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true

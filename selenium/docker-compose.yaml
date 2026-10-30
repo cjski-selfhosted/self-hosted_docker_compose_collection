@@ -1,0 +1,8 @@
+services:
+  selenium:
+    image: selenium/standalone-chrome:latest
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+    restart: unless-stopped
+    network_mode: host
+    shm_size: '2147483648'

@@ -1,0 +1,21 @@
+services:
+  postgresql:
+    image: supabase/postgres:17.4.1.032
+    restart: unless-stopped
+    environment:
+      PGUSER: ${PGUSER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+    volumes:
+    - volume_1:/var/lib/postgresql/data
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - psql -U postgres -d postgres -c 'SELECT 1' || exit 1
+      interval: 5000000000ns
+      timeout: 5000000000ns
+      start_period: 5000000000ns
+      retries: 10
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}

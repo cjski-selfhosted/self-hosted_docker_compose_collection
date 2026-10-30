@@ -1,0 +1,8 @@
+services:
+  ollama-api:
+    devices:
+    - /dev/dri:/dev/dri:rwm
+    - /dev/kfd:/dev/kfd:rwm
+    environment:
+      OLLAMA_IGPU_ENABLE: ${OLLAMA_IGPU_ENABLE}
+      OLLAMA_VULKAN: ${OLLAMA_VULKAN}

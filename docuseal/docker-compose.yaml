@@ -1,0 +1,23 @@
+services:
+  docuseal:
+    image: docuseal/docuseal:latest
+    restart: always
+    environment:
+      HOST: ${HOST}
+    volumes:
+    - volume_1:/data
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:3000
+    healthcheck:
+      test:
+      - CMD
+      - wget
+      - -q
+      - --spider
+      - http://127.0.0.1:3000
+      interval: 5000000000ns
+      timeout: 20000000000ns
+      retries: 10
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}

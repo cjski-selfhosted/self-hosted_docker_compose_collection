@@ -1,0 +1,20 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    restart: unless-stopped
+    volumes:
+    - volume_1:/app/data
+    - ${UPTIME_KUMA_BIND_2}:/var/run/docker.sock
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:3001
+    healthcheck:
+      test:
+      - CMD-SHELL
+      - extra/healthcheck
+      interval: 2000000000ns
+      timeout: 10000000000ns
+      start_period: 180000000000ns
+      retries: 15
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}

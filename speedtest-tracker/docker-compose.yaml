@@ -1,21 +1,17 @@
 services:
-    speedtest-tracker:
-        image: lscr.io/linuxserver/speedtest-tracker:latest
-        restart: unless-stopped
-        container_name: speedtest-tracker
-        ports:
-            - 8221:80
-            - 9443:443
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - APP_KEY=${APP_KEY}
-            - DB_CONNECTION=sqlite
-        volumes:
-            - /home/cjski/Docker/speedtest-tracker/data:/config # change path
-        networks:
-          - proxy_network
-
-networks:
-  proxy_network:
-    external: true
+  speedtest-tracker:
+    image: lscr.io/linuxserver/speedtest-tracker:latest
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+    restart: unless-stopped
+    environment:
+      DB_CONNECTION: ${DB_CONNECTION}
+      SPEEDTEST_SCHEDULE: ${SPEEDTEST_SCHEDULE}
+      PUID: ${PUID}
+      PGID: ${PGID}
+      APP_KEY: ${APP_KEY}
+    volumes:
+    - ${SPEEDTEST_TRACKER_BIND_1}:/config
+    ports:
+    - ${BIND_ADDRESS}:${SPEEDTEST_TRACKER_PORT_443}:443
+    - ${BIND_ADDRESS}:${SPEEDTEST_TRACKER_PORT_80}:80

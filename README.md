@@ -1,94 +1,92 @@
-# 🐳 Self-Hosted Docker Compose Collection
+# Self-hosted Docker Compose collection
 
-A collection of Docker Compose files that I use for hosting various services on my server. Simple deployment, enhanced privacy, full control over your data.
+Compose definitions for services I run in my home lab, plus a few reference examples I keep around. The current-use definitions were compared with local Docker metadata and Coolify's deployed configurations on **30 October 2026**.
 
-This collection is designed for **home server enthusiasts, self-hosting beginners, and advanced users** looking for a quick, flexible, and efficient way to deploy their favorite services. 🚀
+The public files contain service definitions, not my private server layout. Real paths, domains, credentials and volume names go in an ignored `.env` or local configuration file. Each folder has an `.env.example`; my exact source files, runtime settings and machine-specific values are held in a separate protected configuration snapshot.
 
----
+## Current-use definitions
 
-## 🚀 Why Use This Collection?
+Related application/database containers stay together. Platform-managed components and custom applications are covered by the [scope notes](#scope), rather than copied out as misleading standalone services.
 
-- **Easy Setup:** Quickly deploy services using pre-configured Docker Compose files.
-- **Self-Hosted & Private:** Keep your data under your control with local or cloud hosting.
-- **Flexible & Expandable:** Easily add new services or modify existing ones.
-- **Minimal Configuration:** Each service is designed to be ready-to-use with minimal setup.
+| Definition | Included services | Observed management |
+|---|---|---|
+| [cloudflared](cloudflared/docker-compose.yaml) | `cloudflared-admin` | Docker/Portainer or operator Compose |
+| [docuseal](docuseal/docker-compose.yaml) | `docuseal` | Coolify |
+| [ghost](ghost/docker-compose.yaml) | `mysql`, `ghost` | Coolify |
+| [glances](glances/docker-compose.yaml) | `glances` | Coolify |
+| [hermes](hermes/docker-compose.yaml) | `hermes-agent`, `hermes-webui` | Docker/Portainer or operator Compose |
+| [homarr](homarr/docker-compose.yaml) | `homarr` | Docker/Portainer or operator Compose |
+| [it-tools](it-tools/docker-compose.yaml) | `it-tools` | Coolify |
+| [jackett](jackett/docker-compose.yaml) | `jackett` | Docker/Portainer or operator Compose |
+| [jellyfin](jellyfin/docker-compose.yaml) | `jellyfin` | Docker/Portainer or operator Compose |
+| [maybe-finance](maybe-finance/docker-compose.yaml) | `postgres`, `maybe` | Coolify |
+| [mysql](mysql/docker-compose.yaml) | `mysql` | Coolify |
+| [n8n](n8n/docker-compose.yaml) | `n8n`, `postgresql` | Coolify |
+| [nextcloud](nextcloud/docker-compose.yaml) | `nextcloud`, `db` | Docker/Portainer or operator Compose |
+| [ntfy](ntfy/docker-compose.yaml) | `ntfy` | Coolify |
+| [odoo](odoo/docker-compose.yaml) | `odoo`, `postgresql` | Coolify |
+| [open-webui](open-webui/docker-compose.yaml) | `open-webui`, `ollama-api` | Coolify |
+| [overseerr](overseerr/docker-compose.yaml) | `overseerr` | Docker/Portainer or operator Compose |
+| [pgadmin](pgadmin/docker-compose.yaml) | `pgadmin` | Coolify |
+| [pi-hole](pi-hole/docker-compose.yaml) | `pihole` | Docker/Portainer or operator Compose |
+| [plex](plex/docker-compose.yaml) | `plex` | Docker/Portainer or operator Compose |
+| [portainer](portainer/docker-compose.yaml) | `portainer` | Docker/Portainer or operator Compose |
+| [postgresql](postgresql/docker-compose.yaml) | `postgresql` | Coolify |
+| [privatebin](privatebin/docker-compose.yaml) | `privatebin` | Coolify |
+| [proton-bridge](proton-bridge/docker-compose.yaml) | `protonmail-bridge` | Docker/Portainer or operator Compose |
+| [protonvpn](protonvpn/docker-compose.yaml) | `gluetun` | Docker/Portainer or operator Compose |
+| [qbittorrent](qbittorrent/docker-compose.yaml) | `gluetun`, `qbittorrent` | Docker/Portainer or operator Compose |
+| [radarr](radarr/docker-compose.yaml) | `radarr` | Docker/Portainer or operator Compose |
+| [samba](samba/docker-compose.yaml) | `samba` | Docker/Portainer or operator Compose |
+| [selenium](selenium/docker-compose.yaml) | `selenium` | Docker/Portainer or operator Compose |
+| [sonarr](sonarr/docker-compose.yaml) | `sonarr` | Docker/Portainer or operator Compose |
+| [speedtest-tracker](speedtest-tracker/docker-compose.yaml) | `speedtest-tracker` | Docker/Portainer or operator Compose |
+| [supabase-postgres](supabase-postgres/docker-compose.yaml) | `postgresql` | Coolify |
+| [uptime-kuma](uptime-kuma/docker-compose.yaml) | `uptime-kuma` | Coolify |
+| [vaultwarden](vaultwarden/docker-compose.yaml) | `vaultwarden` | Docker/Portainer or operator Compose |
+| [watchtower](watchtower/docker-compose.yaml) | `watchtower` | Docker/Portainer or operator Compose |
+| [Traefik](traefik/docker-compose.yaml) | Proxy definition and sanitised static configuration example | Coolify owns the live proxy |
 
----
+[Coolify platform and import notes](coolify/README.md)
 
-## 📜 List of Services
+## Reference examples
 
-Here are some self-hosted services included in this collection, linked to their respective GitHub repositories:
+These definitions are retained and parameterised, but were not observed running on the inspected host: [AdGuard](adguard/docker-compose.yaml), [Cloudflare DDNS](cloudflare-ddns/docker-compose.yaml), [NGINX Proxy](nginx-proxy/docker-compose.yaml), and [NGINX Proxy Manager](nginx-proxy-manager/docker-compose.yaml).
 
-* [AdGuard-Home](https://github.com/AdguardTeam/AdGuardHome) - Network-wide ad blocking and DNS filtering
-* [Cloudflare-DDNS](https://github.com/favonia/cloudflare-ddns) - A small, feature-rich, and robust Cloudflare DDNS updater
-* [Gluetun](https://github.com/qdm12/gluetun) - OpenVPN + ProtonVPN for secure networking
-* [Homarr](https://github.com/homarr-labs/homarr) - Dashboard for self-hosted applications
-* [Jackett](https://github.com/linuxserver/docker-jackett) - Torrent tracker management
-* [Jellyfin](https://github.com/jellyfin/jellyfin) - Open-source media server
-* [Nextcloud](https://github.com/nextcloud/docker) - Access & share your files, calendars, contacts, mail & more from any device, on your terms
-* [Nginx Proxy](https://github.com/nginx-proxy/nginx-proxy) - Reverse proxy for self-hosted services (replaced by NPM)
-* [Nginx Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) - Reverse proxy for self-hosted services + WEB UI
-* [Overseerr](https://github.com/linuxserver/docker-overseerr) - Managing content requests for your media library
-* [Pi-Hole](https://github.com/pi-hole/pi-hole) - Network-wide ad blocker and tracker filter
-* [Plex](https://github.com/linuxserver/docker-plex) - Media server for streaming movies and TV series
-* [Portainer](https://github.com/portainer/portainer) - Container management platform
-* [Proton Bridge](https://github.com/shenxn/protonmail-bridge-docker) - IMAP/SMTP Bridge for ProtonMail
-* [Radarr](https://github.com/linuxserver/docker-radarr) - See all your upcoming movies in one convenient location
-* [Sonarr](https://github.com/linuxserver/docker-sonarr) - See all your upcoming series in one convenient location
-* [Speedtest-Tracker](https://github.com/linuxserver/docker-speedtest-tracker) - Monitor your internet speed with automated tests
-* [Traefik](https://github.com/traefik/traefik) - Reverse proxy
-* [Vaultwarden](https://github.com/dani-garcia/vaultwarden) - Lightweight Bitwarden server implementation
-* [qBittorrent](https://github.com/linuxserver/docker-qbittorrent) - BitTorrent client with web UI
+## Use one stack
 
-💡 Discover other awesome self-hosted apps at [Awesome-Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted).
-
----
-
-## 🛠 How to Use
-
-Deploy services easily using **Docker Compose**:
-
-1️⃣ **Clone the repository:**
-
-```bash
-git clone git@github.com:cjski-selfhosted/self-hosted_docker_compose_collection.git
-cd self-hosted_docker_compose_collection
+```sh
+cd <stack-folder>
+cp .env.example .env
+# Set real paths, credentials and the intended ports.
+docker compose --env-file .env config --quiet
+# Run only when you intend to deploy the stack:
+docker compose --env-file .env up -d
 ```
 
-2️⃣ **Navigate to your desired service directory and deploy:**
+HTTP examples use loopback bindings for local access. Choose a suitable `BIND_ADDRESS` and unused port for your environment; LAN services such as Samba and browser/monitoring services with host networking are documented in their folders. PostgreSQL services have no host-published database port.
 
-```bash
-cd <service-name>
-docker-compose up -d
+If Coolify will own routing, follow [its import notes](coolify/README.md) instead of starting an additional stack beside an existing managed service. The standalone Traefik reference must not compete with Coolify's current proxy for ports 80/443.
+
+## Public definitions and private recovery settings
+
+- **In Git:** Compose files, configuration examples, `.env.example`, and operating notes.
+- **Outside Git:** real `.env` files, local overrides, private domains/certificates, account configuration and a runtime/source-file snapshot.
+- **Separately retained:** application data and database backups.
+
+The named-volume variables let a recovery use the original volume identities. Do not generate new encryption keys for data that needs its original keys. The [restore guide](RESTORE.md) explains the order and snapshot tool. [images.lock.json](images.lock.json) records the image identities observed with the current-use definitions for version recovery.
+
+## Validate without deployment
+
+```sh
+python3 tools/validate_collection.py
+python3 -m unittest discover -s tests -v
 ```
 
-3️⃣ **Verify your service is running:**
+The validator resolves the example Compose files, including the optional GPU combination, checks public-file boundaries and rejects host-published PostgreSQL ports. It does not pull images, start containers, migrate databases or certify an application's restore/health.
 
-```bash
-docker-compose ps
-```
+## Scope
 
-🔧 **Customization:**  
-Each service has a `docker-compose.yml` file. Modify the configurations as needed before deployment.
+The inspected estate also contains Coolify's own database/Redis/realtime/sentinel components, custom application images, and private configuration. Those are not interchangeable app templates: recover the platform through its own installation/recovery path and recover custom applications from their source/builds and protected configuration. Private application identifiers, security-camera configuration and automation credentials are not published here.
 
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork this repository.
-2. Add your Docker Compose file in a clearly named directory.
-3. Submit a pull request.
-
----
-
-## 📄 License
-
-This collection is licensed under the **MIT License**. See [LICENSE](LICENSE) for full details.
-
----
-
-## ✨ Keywords 
-
-self-hosted, docker compose, home server, self-hosting, privacy, media server, VPN, ad-blocking, reverse proxy, automation
+The Open WebUI/Ollama definition covers the local Docker service. Remote workstation/router configuration and Home Assistant YAML are not part of this collection. Public configuration defaults remove machine-specific values and add documented loopback access where the live service is routed by Coolify; the protected snapshot preserves the exact original settings.

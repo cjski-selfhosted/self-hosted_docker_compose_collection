@@ -1,0 +1,43 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:latest
+    restart: unless-stopped
+    environment:
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL}
+    volumes:
+    - volume_1:/app/backend/data
+    ports:
+    - ${BIND_ADDRESS}:${WEB_PORT}:8080
+    healthcheck:
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://127.0.0.1:8080
+      interval: 5000000000ns
+      timeout: 30000000000ns
+      retries: 10
+    depends_on:
+      ollama-api:
+        condition: service_healthy
+  ollama-api:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    environment:
+      OLLAMA_ORIGINS: ${OLLAMA_ORIGINS}
+      OLLAMA_HOST: ${OLLAMA_HOST}
+    volumes:
+    - volume_2:/root/.ollama
+    healthcheck:
+      test:
+      - CMD
+      - ollama
+      - list
+      interval: 5000000000ns
+      timeout: 30000000000ns
+      retries: 10
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}
+  volume_2:
+    name: ${VOLUME_2_NAME}

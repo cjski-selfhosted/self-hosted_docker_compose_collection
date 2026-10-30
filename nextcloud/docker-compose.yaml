@@ -1,45 +1,39 @@
-volumes:
-  nextcloud:
-  db:
-
 services:
+  nextcloud:
+    image: nextcloud:latest
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+    restart: always
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+    volumes:
+    - volume_1:/var/www/html
+    ports:
+    - ${BIND_ADDRESS}:${NEXTCLOUD_PORT_80}:80
+    depends_on:
+      db:
+        condition: service_started
   db:
     image: mariadb:10.6
-    container_name: nextcloud_db
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
     restart: always
-    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
-    volumes:
-      - db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-    networks:
-      - nextcloud_network
-
-  app:
-    image: nextcloud
-    container_name: nextcloud
-    restart: always
-    ports:
-      - 9080:80
-    links:
-      - db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+    command:
+    - --transaction-isolation=READ-COMMITTED
+    - --log-bin=binlog
+    - --binlog-format=ROW
     volumes:
-      - nextcloud:/var/www/html
-    environment:
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - MYSQL_HOST=db
-    networks:
-      - nextcloud_network
-      - proxy_network 
-
-networks:
-  proxy_network:
-    external: true
-  nextcloud_network:
-    name: nextcloud_network
-    driver: bridge
+    - volume_2:/var/lib/mysql
+volumes:
+  volume_1:
+    name: ${VOLUME_1_NAME}
+  volume_2:
+    name: ${VOLUME_2_NAME}
