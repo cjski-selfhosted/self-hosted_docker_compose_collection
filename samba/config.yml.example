@@ -8,26 +8,26 @@ auth:
   group: user
   uid: 1100
   gid: 1002
-  password_file: CHANGE_ME_unique_secret
+  password: CHANGE_ME_unique_secret
 global:
 - force group = user
 share:
 - name: share-1
-  path: /samba/share-6-5
+  path: /samba/share-5
   browsable: true
   readonly: false
   guestok: true
   writelist: user1, user2
   validusers: user1, user2
 - name: share-2
-  path: /samba/share-6-2
+  path: /samba/share-2
   browsable: true
   readonly: false
   guestok: false
   validusers: user1
   writelist: user1
 - name: share-3
-  path: /samba/share-6-3
+  path: /samba/share-3
   browsable: true
   readonly: false
   guestok: false
@@ -41,7 +41,7 @@ share:
   validusers: user1, user2
   writelist: user1, user2
 - name: share-5
-  path: /samba/share-6-4
+  path: /samba/share-4
   browsable: true
   readonly: true
   guestok: false
